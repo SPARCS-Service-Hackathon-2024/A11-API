@@ -5,11 +5,10 @@ on:
   push:
     branches:
       - 'develop'
-      - 'master'
 
 jobs:
   build:
-    name: "[CI] Check Gradle Build"
+    name: "Check Gradle Build"
     runs-on: ubuntu-latest
     steps:
       - name: (Set Up) checkout

@@ -64,6 +64,24 @@ tasks.register('copyGitSubmodule', Copy) {
 	into './src/main/resources'
 }
 
+tasks.named('bootBuildImage') {
+	environment["BPE_DELIM_JAVA_TOOL_OPTIONS"] = " "
+	environment["BPE_APPEND_JAVA_TOOL_OPTIONS"] = "-XX:+ExitOnOutOfMemoryError -XX:MaxDirectMemorySize=10M " +
+			"-XX:MaxMetaspaceSize=150M -XX:ReservedCodeCacheSize=60M -Xss256K"
+
+	def dockerhubId = project.property("DOCKERHUB_ID")
+	def dockerhubToken = project.property("DOCKERHUB_TOKEN")
+
+	imageName = dockerhubId + "/${project.name}"
+	publish = true
+	docker {
+		publishRegistry {
+			username = dockerhubId
+			password = dockerhubToken
+		}
+	}
+}
+
 processResources {
 	dependsOn copyGitSubmodule
 }
