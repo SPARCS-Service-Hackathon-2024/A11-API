@@ -1,12 +1,18 @@
 package com.partybbangbbang.member.domain;
 
+import com.partybbangbbang.couple.domain.constants.Emotion;
 import com.partybbangbbang.global.auditing.BaseEntity;
+import com.partybbangbbang.global.exception.BusinessException;
 import com.partybbangbbang.member.domain.constants.Sex;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import static com.partybbangbbang.couple.domain.constants.Emotion.NEUTRAL;
+import static com.partybbangbbang.couple.exception.CoupleError.ALREADY_COUPLE;
+import static com.partybbangbbang.couple.exception.CoupleError.COUPLE_SAME_SEX;
+import static com.partybbangbbang.member.domain.constants.Sex.MALE;
 import static jakarta.persistence.GenerationType.IDENTITY;
 import static java.util.UUID.randomUUID;
 import static lombok.AccessLevel.PROTECTED;
@@ -38,6 +44,14 @@ public class Member extends BaseEntity {
     @Column(name = "is_matched")
     private boolean isMatched;
 
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "emotion")
+    private Emotion emotion;
+
+    @Column(name = "primary_status")
+    private boolean primaryStatus;
+
     @Builder
     private Member(
             String email,
@@ -50,6 +64,7 @@ public class Member extends BaseEntity {
         this.sex = sex;
         this.invitationCode = randomUUID().toString().substring(0, 6);
         this.isMatched = false;
+        this.emotion = NEUTRAL;
     }
 
     public static Member of(
@@ -65,4 +80,29 @@ public class Member extends BaseEntity {
                 .sex(sex)
                 .build();
     }
+
+    public boolean isHusband() {
+        return this.sex.equals(MALE);
+    }
+
+    public void updateMatchStatus(boolean newStatus) {
+        this.isMatched = newStatus;
+    }
+
+    public void validateSameSex(Member member) {
+        if (this.sex.equals(member.getSex())) {
+            throw BusinessException.of(COUPLE_SAME_SEX);
+        }
+    }
+
+    public void updatePrimaryStatus(boolean newStatus) {
+        this.primaryStatus = newStatus;
+    }
+
+    public void validateIsMatched() {
+        if (isMatched()) {
+            throw BusinessException.of(ALREADY_COUPLE);
+        }
+    }
+
 }
