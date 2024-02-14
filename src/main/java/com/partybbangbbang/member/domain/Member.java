@@ -1,6 +1,7 @@
 package com.partybbangbbang.member.domain;
 
 import com.partybbangbbang.global.auditing.BaseEntity;
+import com.partybbangbbang.member.domain.constants.Sex;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -26,25 +27,32 @@ public class Member extends BaseEntity {
     @Column(name = "nickname")
     private String nickname;
 
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
+
     @Builder
     private Member(
             String email,
             String password,
-            String nickname
+            String nickname,
+            Sex sex
     ) {
         this.memberInfo = MemberInfo.of(email, password);
         this.nickname = nickname;
+        this.sex = sex;
     }
 
     public static Member of(
             String email,
             String password,
-            String nickname
+            String nickname,
+            Sex sex
     ) {
         return Member.builder()
                 .email(email)
                 .password(password)
                 .nickname(nickname)
+                .sex(sex)
                 .build();
     }
 }

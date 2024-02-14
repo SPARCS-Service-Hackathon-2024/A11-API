@@ -1,10 +1,11 @@
-package com.partybbangbbang.member.presentation.dto.request;
+package com.partybbangbbang.member.application.dto.request;
 
+import com.partybbangbbang.member.domain.constants.Sex;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 
-public record WebJoinRequest(
+public record JoinRequest(
         @NotNull(message = "이메일을 반드시 입력해주세요.")
         @Pattern(
                 regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$",
@@ -16,12 +17,11 @@ public record WebJoinRequest(
                 regexp = "(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).*",
                 message = "영문, 숫자, 특수문자가 반드시 조합되어야 합니다.")
         String password,
-        
-        @Length(min = 2, max = 6, message = "닉네임을 2 ~ 6글자로 입력해주세요.")
-        String nickname
-) {
 
-    public JoinRequest convert() {
-        return new JoinRequest(email, password, nickname);
-    }
+        @Length(min = 2, max = 6, message = "닉네임을 2 ~ 6글자로 입력해주세요.")
+        String nickname,
+
+        @NotNull(message = "성별이 유효하지 않습니다.")
+        Sex sex
+) {
 }

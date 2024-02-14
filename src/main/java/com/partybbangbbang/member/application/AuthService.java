@@ -2,10 +2,10 @@ package com.partybbangbbang.member.application;
 
 import com.partybbangbbang.global.exception.BusinessException;
 import com.partybbangbbang.global.security.jwt.JwtService;
+import com.partybbangbbang.member.application.dto.request.JoinRequest;
+import com.partybbangbbang.member.application.dto.response.JoinResponse;
 import com.partybbangbbang.member.domain.Member;
 import com.partybbangbbang.member.infra.persistence.MemberRepository;
-import com.partybbangbbang.member.presentation.dto.request.JoinRequest;
-import com.partybbangbbang.member.presentation.dto.response.JoinResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +25,10 @@ public class AuthService {
     private final PasswordEncoder encoder;
     private final JwtService jwtService;
 
-    public JoinResponse join(JoinRequest request, String userAgent) {
+    public JoinResponse join(
+            JoinRequest request,
+            String userAgent
+    ) {
         if (existsByEmail(request.email()))
             throw new BusinessException(DUPLICATE_EMAIL);
 
@@ -36,7 +39,8 @@ public class AuthService {
                 Member.of(
                         request.email(),
                         encoder.encode(request.password()),
-                        request.nickname()
+                        request.nickname(),
+                        request.sex()
                 )
         );
 

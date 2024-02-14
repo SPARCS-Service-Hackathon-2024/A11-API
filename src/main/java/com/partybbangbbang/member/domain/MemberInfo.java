@@ -1,5 +1,6 @@
 package com.partybbangbbang.member.domain;
 
+import com.partybbangbbang.member.domain.constants.RoleType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.Enumerated;
