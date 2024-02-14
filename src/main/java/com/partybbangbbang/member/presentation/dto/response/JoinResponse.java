@@ -1,4 +1,4 @@
-package com.partybbangbbang.member.application.dto.response;
+package com.partybbangbbang.member.presentation.dto.response;
 
 import com.partybbangbbang.member.domain.Member;
 
@@ -9,10 +9,10 @@ public record JoinResponse(
         String refreshToken
 ) {
     public static JoinResponse of(
-			Member entity,
-			String accessToken,
-			String refreshToken
-	) {
+            Member entity,
+            String accessToken,
+            String refreshToken
+    ) {
         return new JoinResponse(
                 entity.getId(),
                 entity.getNickname(),

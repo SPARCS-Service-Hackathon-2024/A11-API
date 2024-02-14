@@ -1,13 +1,11 @@
 package com.partybbangbbang.member.presentation;
 
 import com.partybbangbbang.member.application.AuthService;
-import com.partybbangbbang.member.application.RefreshTokenService;
-import com.partybbangbbang.member.application.dto.response.IssuedTokensResponse;
-import com.partybbangbbang.member.application.dto.response.JoinResponse;
-import com.partybbangbbang.member.presentation.dto.WebIssuedTokensRequest;
-import com.partybbangbbang.member.presentation.dto.WebIssuedTokensResponse;
-import com.partybbangbbang.member.presentation.dto.WebJoinRequest;
-import com.partybbangbbang.member.presentation.dto.WebJoinResponse;
+import com.partybbangbbang.member.application.TokenService;
+import com.partybbangbbang.member.presentation.dto.request.WebIssuedTokensRequest;
+import com.partybbangbbang.member.presentation.dto.request.WebJoinRequest;
+import com.partybbangbbang.member.presentation.dto.response.IssuedTokensResponse;
+import com.partybbangbbang.member.presentation.dto.response.JoinResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,25 +25,24 @@ import java.net.URI;
 public class AuthController {
 
     private final AuthService authService;
-    private final RefreshTokenService refreshTokenService;
+    private final TokenService refreshTokenService;
 
     @PostMapping("/join")
-    public ResponseEntity<WebJoinResponse> join(
+    public ResponseEntity<JoinResponse> join(
             @RequestBody @Validated WebJoinRequest request,
             HttpServletRequest servletRequest
     ) {
-        JoinResponse appResponse = authService.join(request.convert(), servletRequest.getHeader("User-Agent"));
-        return ResponseEntity.created(URI.create("/api/v1/user/" + appResponse.id()))
-                .body(WebJoinResponse.of(appResponse));
+        JoinResponse response = authService.join(request.convert(), servletRequest.getHeader("User-Agent"));
+        return ResponseEntity.created(URI.create("/api/v1/user/" + response.id()))
+                .body(response);
     }
 
     @PostMapping("/token")
-    public ResponseEntity<WebIssuedTokensResponse> reIssueTokens(
+    public ResponseEntity<IssuedTokensResponse> reIssueTokens(
             @RequestBody WebIssuedTokensRequest request,
             HttpServletRequest servletRequest
     ) {
-        IssuedTokensResponse issuedTokensResponse =
-                refreshTokenService.issueTokens(request.refreshToken(), servletRequest.getHeader("User-Agent"));
-        return ResponseEntity.ok(WebIssuedTokensResponse.of(issuedTokensResponse));
+        IssuedTokensResponse response = refreshTokenService.issueTokens(request.refreshToken(), servletRequest.getHeader("User-Agent"));
+        return ResponseEntity.ok(response);
     }
 }
