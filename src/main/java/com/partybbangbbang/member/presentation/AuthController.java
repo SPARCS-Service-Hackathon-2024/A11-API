@@ -2,13 +2,12 @@ package com.partybbangbbang.member.presentation;
 
 import com.partybbangbbang.member.application.AuthService;
 import com.partybbangbbang.member.application.TokenService;
-import com.partybbangbbang.member.presentation.dto.request.WebIssuedTokensRequest;
-import com.partybbangbbang.member.presentation.dto.request.WebJoinRequest;
-import com.partybbangbbang.member.presentation.dto.response.IssuedTokensResponse;
-import com.partybbangbbang.member.presentation.dto.response.JoinResponse;
+import com.partybbangbbang.member.application.dto.request.IssuedTokensRequest;
+import com.partybbangbbang.member.application.dto.request.JoinRequest;
+import com.partybbangbbang.member.application.dto.response.IssuedTokensResponse;
+import com.partybbangbbang.member.application.dto.response.JoinResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 
-@Slf4j
 @RestController
-@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/auth")
 public class AuthController {
 
     private final AuthService authService;
@@ -29,17 +27,17 @@ public class AuthController {
 
     @PostMapping("/join")
     public ResponseEntity<JoinResponse> join(
-            @RequestBody @Validated WebJoinRequest request,
+            @RequestBody @Validated JoinRequest request,
             HttpServletRequest servletRequest
     ) {
-        JoinResponse response = authService.join(request.convert(), servletRequest.getHeader("User-Agent"));
+        JoinResponse response = authService.join(request, servletRequest.getHeader("User-Agent"));
         return ResponseEntity.created(URI.create("/api/v1/user/" + response.id()))
                 .body(response);
     }
 
     @PostMapping("/token")
     public ResponseEntity<IssuedTokensResponse> reIssueTokens(
-            @RequestBody WebIssuedTokensRequest request,
+            @RequestBody IssuedTokensRequest request,
             HttpServletRequest servletRequest
     ) {
         IssuedTokensResponse response = refreshTokenService.issueTokens(request.refreshToken(), servletRequest.getHeader("User-Agent"));

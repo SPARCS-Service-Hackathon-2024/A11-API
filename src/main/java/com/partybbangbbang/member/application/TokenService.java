@@ -2,10 +2,10 @@ package com.partybbangbbang.member.application;
 
 import com.partybbangbbang.global.exception.BusinessException;
 import com.partybbangbbang.global.security.jwt.JwtService;
+import com.partybbangbbang.member.application.dto.response.IssuedTokensResponse;
 import com.partybbangbbang.member.domain.RefreshToken;
 import com.partybbangbbang.member.exception.AuthError;
 import com.partybbangbbang.member.infra.persistence.RefreshTokenRepository;
-import com.partybbangbbang.member.presentation.dto.response.IssuedTokensResponse;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

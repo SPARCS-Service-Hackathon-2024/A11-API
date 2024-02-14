@@ -1,4 +1,4 @@
-package com.partybbangbbang.member.presentation.dto.response;
+package com.partybbangbbang.member.application.dto.response;
 
 public record IssuedTokensResponse(
         Long id,
