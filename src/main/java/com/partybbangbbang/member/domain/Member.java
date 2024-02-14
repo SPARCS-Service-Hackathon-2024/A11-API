@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
+import static java.util.UUID.randomUUID;
 import static lombok.AccessLevel.PROTECTED;
 
 @Entity
@@ -30,6 +31,10 @@ public class Member extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
+    private String invitationCode;
+
+    private boolean isMatched;
+
     @Builder
     private Member(
             String email,
@@ -40,6 +45,8 @@ public class Member extends BaseEntity {
         this.memberInfo = MemberInfo.of(email, password);
         this.nickname = nickname;
         this.sex = sex;
+        this.invitationCode = randomUUID().toString().substring(0, 6);
+        this.isMatched = false;
     }
 
     public static Member of(
