@@ -32,8 +32,11 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
 	private final JwtFactory jwtFactory;
 
 	@Override
-	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws
-		ServletException, IOException {
+	protected void doFilterInternal(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			FilterChain chain
+	) throws ServletException, IOException {
 		String encodedBody = getAccessToken(request);
 
 		if (encodedBody == null) {

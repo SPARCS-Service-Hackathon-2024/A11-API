@@ -20,13 +20,20 @@ public class JwtService {
 	private final JwtFactory jwtFactory;
 	private final RefreshTokenRepository refreshTokenRepository;
 
-	public Jwt getAccessToken(Member member, Long now) {
+	public Jwt getAccessToken(
+			Member member,
+			Long now
+	) {
 		return jwtFactory.createAuthToken(
 			String.valueOf(member.getId()), member.getMemberInfo().getRole().name(), new Date(jwtFactory.getExpiryOfAccessToken(now))
 		);
 	}
 
-	public Jwt getRefreshToken(Member member, String userAgent, Long now) {
+	public Jwt getRefreshToken(
+			Member member,
+			String userAgent,
+			Long now
+	) {
 		Long expiry = jwtFactory.getExpiryOfRefreshToken(now);
 		Jwt refreshToken = jwtFactory.createAuthToken(null, new Date(expiry));
 		String encodedBody = refreshToken.getEncodedBody();
