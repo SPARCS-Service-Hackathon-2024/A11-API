@@ -2,12 +2,10 @@ package com.partybbangbbang.global.security;
 
 import com.partybbangbbang.global.exception.ApiExceptionHandlingFilter;
 import com.partybbangbbang.global.security.matcher.CustomRequestMatcher;
-import com.partybbangbbang.global.security.filter.CustomAuthorizationFilter;
 import com.partybbangbbang.global.security.provider.CustomAuthenticationProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,7 +15,6 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -30,30 +27,13 @@ import java.util.List;
 public class SecurityConfig {
 
     private final ApiExceptionHandlingFilter apiExceptionHandlingFilter;
-    private final CustomAuthorizationFilter customAuthorizationFilter;
     private final CustomRequestMatcher customRequestMatcher;
 
     @Bean
-    @Order(0)
     public SecurityFilterChain authFilterChain(HttpSecurity http) throws Exception {
         http.securityMatchers(matcher -> matcher.requestMatchers(
-                        customRequestMatcher.authEndpoints(),
-                        customRequestMatcher.errorEndpoints(),
-                        customRequestMatcher.userEndpoints()
-                ))
+                        customRequestMatcher.customEndpoints()))
                 .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
-                .addFilterBefore(apiExceptionHandlingFilter, UsernamePasswordAuthenticationFilter.class);
-
-        return commonHttpSecurity(http).build();
-    }
-
-    @Bean
-    @Order(1)
-    public SecurityFilterChain anyRequestFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers(new AntPathRequestMatcher("/api/v1/tteokguk/find/**")).hasAnyRole("ANONYMOUS", "USER")
-                        .anyRequest().hasRole("USER"))
-                .addFilterAfter(customAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(apiExceptionHandlingFilter, UsernamePasswordAuthenticationFilter.class);
 
         return commonHttpSecurity(http).build();
