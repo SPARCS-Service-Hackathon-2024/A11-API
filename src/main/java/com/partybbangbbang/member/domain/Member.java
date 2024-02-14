@@ -29,10 +29,13 @@ public class Member extends BaseEntity {
     private String nickname;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "sex")
     private Sex sex;
 
+    @Column(name = "invitation_code")
     private String invitationCode;
 
+    @Column(name = "is_matched")
     private boolean isMatched;
 
     @Builder

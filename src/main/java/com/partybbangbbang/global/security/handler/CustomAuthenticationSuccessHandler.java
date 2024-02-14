@@ -47,7 +47,10 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         writer.write(jsonResponse);
     }
 
-    private String getJsonResponse(Member member, String userAgent) throws IOException {
+    private String getJsonResponse(
+            Member member,
+            String userAgent
+    ) throws IOException {
         om.registerModule(new JavaTimeModule());
         om.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 

@@ -8,14 +8,12 @@ import com.partybbangbbang.member.domain.Member;
 import com.partybbangbbang.member.infra.persistence.MemberRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import static com.partybbangbbang.member.exception.MemberError.DUPLICATE_EMAIL;
 import static com.partybbangbbang.member.exception.MemberError.DUPLICATE_NICKNAME;
 
-@Slf4j
 @Service
 @Transactional
 @RequiredArgsConstructor

@@ -8,7 +8,6 @@ import com.partybbangbbang.member.application.dto.response.IssuedTokensResponse;
 import com.partybbangbbang.member.application.dto.response.JoinResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 
-@Slf4j
 @RestController
-@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/auth")
 public class AuthController {
 
     private final AuthService authService;
