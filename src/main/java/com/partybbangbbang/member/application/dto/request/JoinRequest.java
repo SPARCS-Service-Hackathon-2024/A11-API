@@ -1,6 +1,6 @@
 package com.partybbangbbang.member.application.dto.request;
 
-public record AppJoinRequest(
+public record JoinRequest(
 	String email,
 	String password,
 	String nickname

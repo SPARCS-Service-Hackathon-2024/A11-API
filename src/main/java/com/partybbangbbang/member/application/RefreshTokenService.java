@@ -1,7 +1,7 @@
 package com.partybbangbbang.member.application;
 
 import com.partybbangbbang.global.exception.BusinessException;
-import com.partybbangbbang.member.application.dto.response.AppIssuedTokensResponse;
+import com.partybbangbbang.member.application.dto.response.IssuedTokensResponse;
 import com.partybbangbbang.member.domain.RefreshToken;
 import com.partybbangbbang.member.exception.AuthError;
 import com.partybbangbbang.member.infra.persistence.RefreshTokenRepository;
@@ -19,7 +19,10 @@ public class RefreshTokenService {
 	private final RefreshTokenRepository refreshTokenRepository;
 	private final JwtService jwtService;
 
-	public AppIssuedTokensResponse issueTokens(String refreshToken, String userAgent) {
+	public IssuedTokensResponse issueTokens(
+			String refreshToken,
+			String userAgent
+	) {
 		try {
 			jwtService.validate(refreshToken);
 		} catch (BusinessException e) {
@@ -32,7 +35,7 @@ public class RefreshTokenService {
 		long currentTimeMillis = System.currentTimeMillis();
 		String issuedAccessToken = issueAccessToken(entity, currentTimeMillis);
 		String issuedRefreshToken = issueRefreshToken(entity, userAgent, currentTimeMillis);
-		return new AppIssuedTokensResponse(entity.getMember().getId(), issuedAccessToken, issuedRefreshToken);
+		return new IssuedTokensResponse(entity.getMember().getId(), issuedAccessToken, issuedRefreshToken);
 	}
 
 	public String issueRefreshToken(RefreshToken entity, String userAgent, Long currentTimeMillis) {

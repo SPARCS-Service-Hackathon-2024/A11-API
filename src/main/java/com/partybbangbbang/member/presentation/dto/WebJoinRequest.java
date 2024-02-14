@@ -1,6 +1,6 @@
 package com.partybbangbbang.member.presentation.dto;
 
-import com.partybbangbbang.member.application.dto.request.AppJoinRequest;
+import com.partybbangbbang.member.application.dto.request.JoinRequest;
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.validation.constraints.NotNull;
@@ -21,7 +21,7 @@ public record WebJoinRequest(
 	String nickname
 ) {
 
-	public AppJoinRequest convert() {
-		return new AppJoinRequest(email, password, nickname);
+	public JoinRequest convert() {
+		return new JoinRequest(email, password, nickname);
 	}
 }

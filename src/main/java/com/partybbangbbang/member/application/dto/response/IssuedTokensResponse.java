@@ -1,7 +1,8 @@
 package com.partybbangbbang.member.application.dto.response;
 
-public record MemberResponse(
+public record IssuedTokensResponse(
 	Long id,
-	String nickname
+	String accessToken,
+	String refreshToken
 ) {
 }

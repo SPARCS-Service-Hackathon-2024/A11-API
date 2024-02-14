@@ -1,8 +1,8 @@
 package com.partybbangbbang.member.application;
 
 import com.partybbangbbang.global.exception.BusinessException;
-import com.partybbangbbang.member.application.dto.request.AppJoinRequest;
-import com.partybbangbbang.member.application.dto.response.AppJoinResponse;
+import com.partybbangbbang.member.application.dto.request.JoinRequest;
+import com.partybbangbbang.member.application.dto.response.JoinResponse;
 import com.partybbangbbang.member.domain.Member;
 import com.partybbangbbang.member.infra.persistence.MemberRepository;
 import com.partybbangbbang.global.security.jwt.JwtService;
@@ -26,7 +26,7 @@ public class AuthService {
 	private final PasswordEncoder encoder;
 	private final JwtService jwtService;
 
-	public AppJoinResponse join(AppJoinRequest request, String userAgent) {
+	public JoinResponse join(JoinRequest request, String userAgent) {
 		if (existsByEmail(request.email()))
 			throw new BusinessException(DUPLICATE_EMAIL);
 
@@ -44,7 +44,7 @@ public class AuthService {
 		Long now = System.currentTimeMillis();
 		String accessToken = jwtService.getAccessToken(entity, now).getEncodedBody();
 		String refreshToken = jwtService.getRefreshToken(entity, userAgent, now).getEncodedBody();
-		return AppJoinResponse.of(entity, accessToken, refreshToken);
+		return JoinResponse.of(entity, accessToken, refreshToken);
 	}
 
 	public boolean existsByEmail(String email) {

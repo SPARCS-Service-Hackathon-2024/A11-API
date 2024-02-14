@@ -1,7 +1,7 @@
 package com.partybbangbbang.member.presentation.dto;
 
 
-import com.partybbangbbang.member.application.dto.response.AppJoinResponse;
+import com.partybbangbbang.member.application.dto.response.JoinResponse;
 
 public record WebJoinResponse(
 	Long id,
@@ -9,7 +9,7 @@ public record WebJoinResponse(
 	String accessToken,
 	String refreshToken
 ) {
-	public static WebJoinResponse of(AppJoinResponse response) {
+	public static WebJoinResponse of(JoinResponse response) {
 		return new WebJoinResponse(
 			response.id(),
 			response.nickname(),

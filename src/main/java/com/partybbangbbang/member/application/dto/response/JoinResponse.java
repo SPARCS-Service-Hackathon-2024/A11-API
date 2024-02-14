@@ -1,22 +1,21 @@
 package com.partybbangbbang.member.application.dto.response;
 
-
 import com.partybbangbbang.member.domain.Member;
 
-public record AppInitResponse(
+public record JoinResponse(
         Long id,
         String nickname,
         String accessToken,
         String refreshToken
 ) {
-    public static AppInitResponse of(
+    public static JoinResponse of(
 			Member entity,
 			String accessToken,
 			String refreshToken
 	) {
-        return new AppInitResponse(
+        return new JoinResponse(
                 entity.getId(),
-                entity.getMemberInfo().getNickname(),
+                entity.getNickname(),
                 accessToken,
                 refreshToken
         );
