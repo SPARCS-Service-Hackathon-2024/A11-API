@@ -39,7 +39,10 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
 	}
 
 	@Override
-	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
+	public Authentication attemptAuthentication(
+			HttpServletRequest request,
+			HttpServletResponse response
+	) {
 		UsernamePasswordAuthenticationToken authenticationToken = getAuthenticationToken(request);
 		setDetails(request, authenticationToken);
 		Authentication authenticate;

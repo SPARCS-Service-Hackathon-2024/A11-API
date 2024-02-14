@@ -12,7 +12,12 @@ public class CustomUser extends User {
 
 	private Long id;
 
-	public CustomUser(Long id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
+	public CustomUser(
+			Long id,
+			String username,
+			String password,
+			Collection<? extends GrantedAuthority> authorities
+	) {
 		super(username, password, authorities);
 		this.id = id;
 	}

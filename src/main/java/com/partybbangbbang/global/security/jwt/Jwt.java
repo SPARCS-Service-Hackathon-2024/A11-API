@@ -30,7 +30,11 @@ public class Jwt {
 
     private static final String AUTHORITIES_KEY = "role";
 
-    protected Jwt(String id, Date expiry, Key key) {
+    protected Jwt(
+            String id,
+            Date expiry,
+            Key key
+    ) {
         this.key = key;
         this.encodedBody = createAuthToken(id, expiry);
     }
@@ -40,7 +44,10 @@ public class Jwt {
         this.encodedBody = createAuthToken(id, role, expiry);
     }
 
-    private String createAuthToken(String id, Date expiry) {
+    private String createAuthToken(
+            String id,
+            Date expiry
+    ) {
         return Jwts.builder()
                 .setSubject(id)
                 .signWith(key, SignatureAlgorithm.HS256)
@@ -48,7 +55,11 @@ public class Jwt {
                 .compact();
     }
 
-    private String createAuthToken(String id, String role, Date expiry) {
+    private String createAuthToken(
+            String id,
+            String role,
+            Date expiry
+    ) {
         return Jwts.builder()
                 .setSubject(id)
                 .claim(AUTHORITIES_KEY, role)

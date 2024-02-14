@@ -27,11 +27,18 @@ public class JwtFactory {
 		this.periodOfRefreshToken = periodOfRefreshToken;
 	}
 
-	public Jwt createAuthToken(String id, Date expiry) {
+	public Jwt createAuthToken(
+			String id,
+			Date expiry
+	) {
 		return new Jwt(id, expiry, key);
 	}
 
-	public Jwt createAuthToken(String id, String role, Date expiry) {
+	public Jwt createAuthToken(
+			String id,
+			String role,
+			Date expiry
+	) {
 		return new Jwt(id, role, expiry, key);
 	}
 

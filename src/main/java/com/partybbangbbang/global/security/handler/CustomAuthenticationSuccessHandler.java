@@ -41,7 +41,10 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		writeResponseBody(response, getJsonResponse(details.getMember(), request.getHeader("User-Agent")));
 	}
 
-	private void writeResponseBody(HttpServletResponse response, String jsonResponse) throws IOException {
+	private void writeResponseBody(
+			HttpServletResponse response,
+			String jsonResponse
+	) throws IOException {
 		PrintWriter writer = response.getWriter();
 		writer.write(jsonResponse);
 	}

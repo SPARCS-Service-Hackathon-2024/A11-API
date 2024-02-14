@@ -20,33 +20,26 @@ public class MemberInfo {
     @Column(name = "password")
     String password;
 
-    @Column(name = "nickname")
-    private String nickname;
-
     @Enumerated(STRING)
     @Column(name = "role")
     private RoleType role;
 
     private MemberInfo(
             String email,
-            String password,
-            String nickname
+            String password
     ) {
         this.email = email;
         this.password = password;
-        this.nickname = nickname;
         this.role = RoleType.ROLE_USER;
     }
 
     public static MemberInfo of(
             String email,
-            String password,
-            String nickname
+            String password
     ) {
         return new MemberInfo(
                 email,
-                password,
-                nickname
+                password
         );
     }
 }
