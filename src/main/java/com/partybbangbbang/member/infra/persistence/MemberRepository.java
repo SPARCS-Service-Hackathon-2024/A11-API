@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Transactional
 public interface MemberRepository extends JpaRepository<Member, Long> {
-    boolean existsByMemberInfoNickname(String nickname);
+    boolean existsByNickname(String nickname);
     boolean existsByMemberInfoEmail(String email);
     Optional<Member> findByMemberInfoEmail(String email);
 }

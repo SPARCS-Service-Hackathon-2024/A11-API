@@ -4,7 +4,6 @@ import com.partybbangbbang.global.exception.BusinessException;
 import com.partybbangbbang.member.application.dto.request.AppJoinRequest;
 import com.partybbangbbang.member.application.dto.response.AppJoinResponse;
 import com.partybbangbbang.member.domain.Member;
-import com.partybbangbbang.member.exception.MemberError;
 import com.partybbangbbang.member.infra.persistence.MemberRepository;
 import com.partybbangbbang.global.security.jwt.JwtService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -53,6 +52,6 @@ public class AuthService {
 	}
 
 	public boolean existsByNickname(String nickname) {
-		return memberRepository.existsByMemberInfoNickname(nickname);
+		return memberRepository.existsByNickname(nickname);
 	}
 }

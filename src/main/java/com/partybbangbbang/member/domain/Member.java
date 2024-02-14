@@ -23,9 +23,8 @@ public class Member extends BaseEntity {
     @Embedded
     private MemberInfo memberInfo;
 
-    public Member(MemberInfo memberInfo) {
-        this.memberInfo = memberInfo;
-    }
+    @Column(name = "nickname")
+    private String nickname;
 
     @Builder
     private Member(
@@ -33,7 +32,8 @@ public class Member extends BaseEntity {
             String password,
             String nickname
     ) {
-        this.memberInfo = MemberInfo.of(email, password, nickname);
+        this.memberInfo = MemberInfo.of(email, password);
+        this.nickname = nickname;
     }
 
     public static Member of(
