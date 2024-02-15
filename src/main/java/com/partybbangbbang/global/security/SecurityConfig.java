@@ -52,7 +52,8 @@ public class SecurityConfig {
     @Order(1)
     public SecurityFilterChain anyRequestFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth -> auth
-                        .requestMatchers(new AntPathRequestMatcher("/api/v1/tteokguk/find/**")).hasAnyRole("ANONYMOUS", "USER")
+                        .requestMatchers(new AntPathRequestMatcher("/api/v1/admin/**"))
+                        .hasAnyRole("ADMIN")
                         .anyRequest().hasRole("USER"))
                 .addFilterAfter(customAuthorizationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(apiExceptionHandlingFilter, UsernamePasswordAuthenticationFilter.class);
