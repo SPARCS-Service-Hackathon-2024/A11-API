@@ -4,8 +4,8 @@ import com.partybbangbbang.couple.domain.constants.Emotion;
 import com.partybbangbbang.member.domain.constants.Sex;
 
 public record CoupleMainResponse(
-        Emotion mailEmotion,
-        Emotion femailEmotion,
+        Emotion husbandEmotion,
+        Emotion wifeEmotion,
         Sex primaryGuardian,
         boolean notificationStatus
 ) {

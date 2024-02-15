@@ -54,6 +54,9 @@ public class Member extends BaseEntity {
     @Column(name = "primary_status")
     private boolean primaryStatus;
 
+    @Column(name = "notification_status")
+    private boolean notificationStatus;
+
     @Builder
     private Member(
             String email,
@@ -67,6 +70,7 @@ public class Member extends BaseEntity {
         this.invitationCode = randomUUID().toString().substring(0, 6);
         this.isMatched = false;
         this.emotion = NEUTRAL;
+        this.notificationStatus = false;
     }
 
     public static Member of(

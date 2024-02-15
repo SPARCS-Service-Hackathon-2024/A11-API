@@ -1,6 +1,7 @@
 package com.partybbangbbang.couple.domain;
 
 import com.partybbangbbang.member.domain.Member;
+import com.partybbangbbang.member.domain.constants.Sex;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,8 +45,8 @@ public class Couple {
             receiver.updatePrimaryStatus(true);
             sender.updatePrimaryStatus(false);
         } else {
-            receiver.updatePrimaryStatus(true);
-            sender.updatePrimaryStatus(false);
+            receiver.updatePrimaryStatus(false);
+            sender.updatePrimaryStatus(true);
         }
 
         if (receiver.isHusband()) {
@@ -71,5 +72,13 @@ public class Couple {
                 .babyName(babyName)
                 .receiverPrimaryStatus(receiverPrimaryStatus)
                 .build();
+    }
+
+    public Sex findPrimaryStatus() {
+        if (this.getHusband().isPrimaryStatus()) {
+            return Sex.MALE;
+        } else {
+            return Sex.FEMALE;
+        }
     }
 }

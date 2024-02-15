@@ -15,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/auth")
@@ -31,8 +29,7 @@ public class AuthController {
             HttpServletRequest servletRequest
     ) {
         JoinResponse response = authService.join(request, servletRequest.getHeader("User-Agent"));
-        return ResponseEntity.created(URI.create("/api/v1/user/" + response.id()))
-                .body(response);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/token")
