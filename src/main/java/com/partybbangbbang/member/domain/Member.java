@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.UUID;
+
 import static com.partybbangbbang.couple.domain.constants.Emotion.NEUTRAL;
 import static com.partybbangbbang.couple.exception.CoupleError.ALREADY_COUPLE;
 import static com.partybbangbbang.couple.exception.CoupleError.COUPLE_SAME_SEX;
@@ -105,4 +107,7 @@ public class Member extends BaseEntity {
         }
     }
 
+    public void destroyInvitationCode() {
+        this.invitationCode += "::deleted::" + UUID.randomUUID().toString().substring(0, 8);
+    }
 }

@@ -1,6 +1,6 @@
 package com.partybbangbbang.member.application.dto.response;
 
-public record InvitationCodeResponse(
-        String invitationCode
+public record ValidInvitationResponse(
+        boolean result
 ) {
 }

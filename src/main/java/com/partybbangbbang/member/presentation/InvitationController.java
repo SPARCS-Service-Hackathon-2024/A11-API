@@ -4,7 +4,7 @@ import com.partybbangbbang.couple.application.dto.CoupleIdResponse;
 import com.partybbangbbang.global.security.annotation.AuthId;
 import com.partybbangbbang.member.application.InvitationService;
 import com.partybbangbbang.member.application.dto.request.MatchRequest;
-import com.partybbangbbang.member.application.dto.response.InvitationCodeResponse;
+import com.partybbangbbang.member.application.dto.response.ValidInvitationResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,8 +17,11 @@ public class InvitationController {
     private final InvitationService invitationService;
 
     @GetMapping
-    public ResponseEntity<InvitationCodeResponse> getInvitationCode(@AuthId Long id) {
-        InvitationCodeResponse invitationCodeResponse = invitationService.getInvitationCodeResponse(id);
+    public ResponseEntity<ValidInvitationResponse> isValidInvitation(
+            @AuthId Long id,
+            @RequestBody String invitationCode
+    ) {
+        ValidInvitationResponse invitationCodeResponse = invitationService.getValidInvitationResponse(invitationCode);
         return ResponseEntity.ok(invitationCodeResponse);
     }
 
