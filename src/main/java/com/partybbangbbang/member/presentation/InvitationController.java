@@ -5,6 +5,7 @@ import com.partybbangbbang.global.security.annotation.AuthId;
 import com.partybbangbbang.member.application.InvitationService;
 import com.partybbangbbang.member.application.dto.request.InvitationCodeRequest;
 import com.partybbangbbang.member.application.dto.request.MatchRequest;
+import com.partybbangbbang.member.application.dto.response.InvitationCodeResponse;
 import com.partybbangbbang.member.application.dto.response.ValidInvitationResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,13 +18,19 @@ public class InvitationController {
 
     private final InvitationService invitationService;
 
-    @GetMapping
+    @GetMapping("/valid")
     public ResponseEntity<ValidInvitationResponse> isValidInvitation(
             @AuthId Long id,
             @RequestBody InvitationCodeRequest request
     ) {
         ValidInvitationResponse invitationCodeResponse = invitationService.isValidInvitation(request);
         return ResponseEntity.ok(invitationCodeResponse);
+    }
+
+    @GetMapping("/code")
+    public ResponseEntity<InvitationCodeResponse> getInvitationCodeResponse(@AuthId Long id) {
+        InvitationCodeResponse response = invitationService.getInvitationCodeResponse(id);
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping

@@ -6,6 +6,7 @@ import com.partybbangbbang.couple.infra.persistence.CoupleRepository;
 import com.partybbangbbang.global.exception.BusinessException;
 import com.partybbangbbang.member.application.dto.request.InvitationCodeRequest;
 import com.partybbangbbang.member.application.dto.request.MatchRequest;
+import com.partybbangbbang.member.application.dto.response.InvitationCodeResponse;
 import com.partybbangbbang.member.application.dto.response.ValidInvitationResponse;
 import com.partybbangbbang.member.domain.Member;
 import com.partybbangbbang.member.infra.persistence.MemberRepository;
@@ -29,6 +30,12 @@ public class InvitationService {
     public ValidInvitationResponse isValidInvitation(InvitationCodeRequest request) {
         boolean result = memberRepository.existsByInvitationCode(request.invitationCode());
         return new ValidInvitationResponse(result);
+    }
+
+    public InvitationCodeResponse getInvitationCodeResponse(Long id) {
+        Member member = memberRepository.findById(id)
+                .orElseThrow(() -> BusinessException.of(MEMBER_NOT_FOUND));
+        return new InvitationCodeResponse(member.getInvitationCode());
     }
 
     public CoupleIdResponse matchCouple(
