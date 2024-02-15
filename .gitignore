@@ -1,7 +1,7 @@
 ### Custom
 application.yml
 application-*
-
+Q*.class
 ### Default
 
 HELP.md

@@ -1,91 +1,101 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '3.2.2'
-	id 'io.spring.dependency-management' version '1.1.4'
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'com'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+    sourceCompatibility = '17'
 }
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-security'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.springframework.security:spring-security-test'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 
-	// Hateoas
-	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    // Hateoas
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
 
-	// Lombok
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	testCompileOnly 'org.projectlombok:lombok'
-	testAnnotationProcessor 'org.projectlombok:lombok'
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
 
-	// Databases
-	runtimeOnly 'com.h2database:h2'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+    // Databases
+    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
 
-	// jwt
-	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
-	implementation 'io.jsonwebtoken:jjwt-gson:0.11.5'
-	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+    // jwt
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+    implementation 'io.jsonwebtoken:jjwt-gson:0.11.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 
-	// queryDSL
-	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
-	annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
-	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
-	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+    // queryDSL
+    implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+    annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
+    annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+    annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 
-	// Validation
-	implementation 'org.springframework.boot:spring-boot-starter-validation'
+    // Validation
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // googleSTT
+    implementation(platform("com.google.cloud:libraries-bom:26.1.4"))
+    implementation("com.google.cloud:google-cloud-speech")
+    implementation("com.google.protobuf:protobuf-java:3.21.12")
+    implementation("com.fasterxml.jackson.core:jackson-databind")
+
+    //convert Codec
+    implementation 'org.bytedeco:javacv-platform:1.5.5'
+    implementation 'org.bytedeco:ffmpeg-platform:4.3.2-1.5.5'
 }
 
 tasks.named('test') {
-	systemProperty "spring.profiles.active", "test"
-	useJUnitPlatform()
+    systemProperty "spring.profiles.active", "test"
+    useJUnitPlatform()
 }
 
 tasks.register('copyGitSubmodule', Copy) {
-	from './A11-Config'
-	include '*.yml'
-	into './src/main/resources'
+    from './A11-Config'
+    include '*.yml'
+    into './src/main/resources'
 }
 
 tasks.named('bootBuildImage') {
-	environment["BPE_DELIM_JAVA_TOOL_OPTIONS"] = " "
-	environment["BPE_APPEND_JAVA_TOOL_OPTIONS"] = "-XX:+ExitOnOutOfMemoryError -XX:MaxDirectMemorySize=10M " +
-			"-XX:MaxMetaspaceSize=150M -XX:ReservedCodeCacheSize=60M -Xss256K"
+    environment["BPE_DELIM_JAVA_TOOL_OPTIONS"] = " "
+    environment["BPE_APPEND_JAVA_TOOL_OPTIONS"] = "-XX:+ExitOnOutOfMemoryError -XX:MaxDirectMemorySize=10M " +
+            "-XX:MaxMetaspaceSize=150M -XX:ReservedCodeCacheSize=60M -Xss256K"
 
-	def dockerhubId = project.property("DOCKERHUB_ID")
-	def dockerhubToken = project.property("DOCKERHUB_TOKEN")
+    def dockerhubId = project.property("DOCKERHUB_ID")
+    def dockerhubToken = project.property("DOCKERHUB_TOKEN")
 
-	imageName = dockerhubId + "/${project.name}"
-	publish = true
-	docker {
-		publishRegistry {
-			username = dockerhubId
-			password = dockerhubToken
-		}
-	}
+    imageName = dockerhubId + "/${project.name}"
+    publish = true
+    docker {
+        publishRegistry {
+            username = dockerhubId
+            password = dockerhubToken
+        }
+    }
 }
 
 processResources {
-	dependsOn copyGitSubmodule
+    dependsOn copyGitSubmodule
 }
 
