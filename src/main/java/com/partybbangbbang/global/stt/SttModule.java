@@ -23,7 +23,9 @@ public class SttModule {
             throw BusinessException.of(INVALID_REQUEST_PARAM);
         }
 
-        File convertedFile = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + file.getOriginalFilename());
+        String tmpDir = "/tmp";
+        File convertedFile = new File(tmpDir + File.separator + file.getOriginalFilename());
+
         file.transferTo(convertedFile);
 
         try (SpeechClient speechClient = SpeechClient.create()) {
