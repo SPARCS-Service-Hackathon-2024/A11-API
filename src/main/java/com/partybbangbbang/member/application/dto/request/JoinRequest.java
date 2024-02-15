@@ -18,7 +18,7 @@ public record JoinRequest(
                 message = "영문, 숫자, 특수문자가 반드시 조합되어야 합니다.")
         String password,
 
-        @Length(min = 2, max = 6, message = "닉네임을 2 ~ 6글자로 입력해주세요.")
+        @Length(min = 1, max = 4, message = "닉네임을 1 ~ 4글자로 입력해주세요.")
         String nickname,
 
         @NotNull(message = "성별이 유효하지 않습니다.")
