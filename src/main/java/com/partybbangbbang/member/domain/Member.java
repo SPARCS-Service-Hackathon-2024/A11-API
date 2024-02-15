@@ -57,6 +57,9 @@ public class Member extends BaseEntity {
     @Column(name = "notification_status")
     private boolean notificationStatus;
 
+    @Column(name = "feedback_status")
+    private boolean feedbackStatus;
+
     @Builder
     private Member(
             String email,
@@ -71,6 +74,7 @@ public class Member extends BaseEntity {
         this.isMatched = false;
         this.emotion = NEUTRAL;
         this.notificationStatus = false;
+        this.feedbackStatus = false;
     }
 
     public static Member of(
@@ -103,6 +107,14 @@ public class Member extends BaseEntity {
 
     public void updatePrimaryStatus(boolean newStatus) {
         this.primaryStatus = newStatus;
+    }
+
+    public void updateEmotion(Emotion emotion) {
+        this.emotion = emotion;
+    }
+
+    public void updateNotificationStatus(boolean newStatus) {
+        this.notificationStatus = newStatus;
     }
 
     public void validateIsMatched() {
