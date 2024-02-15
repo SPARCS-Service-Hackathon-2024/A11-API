@@ -11,7 +11,8 @@ public class CustomRequestMatcher {
 
     public RequestMatcher authEndpoints() {
         return new OrRequestMatcher(
-                new AntPathRequestMatcher("/api/v1/auth/**")
+                new AntPathRequestMatcher("/api/v1/auth/**"),
+                new AntPathRequestMatcher("/api/v1/util/**")
         );
     }
 

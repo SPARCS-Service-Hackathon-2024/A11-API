@@ -23,32 +23,27 @@ public class SttModule {
             throw BusinessException.of(INVALID_REQUEST_PARAM);
         }
 
-        String tmpDir = "/tmp";
-        File convertedFile = new File(tmpDir + File.separator + file.getOriginalFilename());
-
+        File convertedFile = new File(System.getProperty("java.io.tmpdir") + System.getProperty("file.separator") + file.getOriginalFilename());
         file.transferTo(convertedFile);
 
-        try (SpeechClient speechClient = SpeechClient.create()) {
-            byte[] audioBytes = Files.readAllBytes(convertedFile.toPath());
+        SpeechClient speechClient = SpeechClient.create();
+        byte[] audioBytes = Files.readAllBytes(convertedFile.toPath());
 
-            ByteString audioData = ByteString.copyFrom(audioBytes);
-            RecognitionAudio recognitionAudio = RecognitionAudio.newBuilder()
-                    .setContent(audioData)
-                    .build();
+        ByteString audioData = ByteString.copyFrom(audioBytes);
+        RecognitionAudio recognitionAudio = RecognitionAudio.newBuilder()
+                .setContent(audioData)
+                .build();
 
-            RecognitionConfig recognitionConfig = RecognitionConfig.newBuilder()
-                    .setEncoding(RecognitionConfig.AudioEncoding.ENCODING_UNSPECIFIED)
-                    .setSampleRateHertz(44100)
-                    .setLanguageCode("ko-KR") // 한국어로 설정
-                    .build();
+        RecognitionConfig recognitionConfig = RecognitionConfig.newBuilder()
+                .setEncoding(RecognitionConfig.AudioEncoding.ENCODING_UNSPECIFIED)
+                .setSampleRateHertz(16000)
+                .setLanguageCode("ko-KR") // 한국어로 설정
+                .build();
 
-            RecognizeResponse response = speechClient.recognize(recognitionConfig, recognitionAudio);
-            List<SpeechRecognitionResult> results = response.getResultsList();
-            SpeechRecognitionResult result = results.get(0);
+        RecognizeResponse response = speechClient.recognize(recognitionConfig, recognitionAudio);
+        List<SpeechRecognitionResult> results = response.getResultsList();
+        SpeechRecognitionResult result = results.get(0);
 
-            return new SttResponse((result.getAlternatives(0).getTranscript()));
-        } catch (Exception e) {
-            throw new RuntimeException("Error processing audio file: " + file.getOriginalFilename(), e);
-        }
+        return new SttResponse((result.getAlternatives(0).getTranscript()));
     }
 }
