@@ -1,7 +1,7 @@
 <div align="center">
 <br/>
 <a href="https://github.com/SPARCS-Service-Hackathon-2024/A11-API"><img src="https://i.ytimg.com/vi/mwvvQqLaFyA/maxresdefault.jpg" width="83.7%"/></a>
-<p>2024 SPARCS Hackathon A11 Team < 가제 > API</p>
+<p>2024 SPARCS Hackathon A11 <b>Team Hear [히어]</b> API</p>
 <br/>
 
 ## 🔧&nbsp;&nbsp;Tech Stack&nbsp;&nbsp;🔧
@@ -60,14 +60,23 @@
     </tr>
     <!-- External Stack -->
     <tr>
-      <td rowspan="3" align="center"><b>External</td>
+      <td rowspan="4" align="center"><b>External</td>
       <td><img src="https://static.vecteezy.com/system/resources/previews/022/841/114/original/chatgpt-logo-transparent-background-free-png.png" width="15px" alt="_icon" />&nbsp;&nbsp;<b>ChatGPT Prompt</td>
       <td>Instance for ChatGPT interactions.</td>
     </tr>
     <tr>
-      <td><img src="https://upload.wikimedia.org/wikipedia/commons/0/08/KakaoMap_logo.png" width="15px" alt="_icon" />&nbsp;&nbsp;<b>Kakao Map API</td>
-      <td>Service for map-related functionality.</td>
+        <td><img src="https://github.com/GDSC-Team-J/ADDI-api/assets/112257466/bb6a956f-f24d-4c47-b3b9-4f0a3bbdb909" width="15px" alt="_icon" />&nbsp;&nbsp;<b>Papago Translation</td>
+	    <td>Global language translation API</td>
     </tr>
+    <tr>
+        <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Clova_assistant_icon.svg/1200px-Clova_assistant_icon.svg.png" width="15px" alt="_icon" />&nbsp;&nbsp;<b>Clova STT Api</b></td>
+        <td>Translate audio data into natural language</td>
+    </tr>
+    <tr>
+        <td><img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" width="14px" alt="_icon" />&nbsp;&nbsp;<b>go_emotions API</td>
+        <td>Text-based sentiment analysis API</td>
+    </tr>
+
   </table>
 </div>
 
