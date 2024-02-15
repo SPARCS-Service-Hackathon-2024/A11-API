@@ -1,8 +1,22 @@
 <div align="center">
 <br/>
 <a href="https://github.com/SPARCS-Service-Hackathon-2024/A11-API"><img src="https://i.ytimg.com/vi/mwvvQqLaFyA/maxresdefault.jpg" width="83.7%"/></a>
-<p>2024 SPARCS Hackathon A11 <b>Team Hear [히어]</b> API</p>
+<p>2024 SPARCS Hackathon A11 <b>Team A11(파티빵빵) Hear</b> API</p>
+
 <br/>
+
+</div>
+
+- Api Server : http://party-bbangbbang.kro.kr/api/v1/
+  
+- API Docs : http://docs.party-bbangbbang.kro.kr
+  
+- Docker Hub : https://hub.docker.com/repository/docker/hbeeen/partybbangbbang/general
+
+<br><br>
+
+<div align="center">
+
 
 ## 🔧&nbsp;&nbsp;Tech Stack&nbsp;&nbsp;🔧
 
@@ -69,7 +83,7 @@
 	    <td>Global language translation API</td>
     </tr>
     <tr>
-        <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Clova_assistant_icon.svg/1200px-Clova_assistant_icon.svg.png" width="15px" alt="_icon" />&nbsp;&nbsp;<b>Clova STT Api</b></td>
+        <td><img src="https://gdm-catalog-fmapi-prod.imgix.net/ProductLogo/10010afe-eb9e-413d-a47c-7f281c729a4f.png?auto=format,compress&size=50" width="15px" alt="_icon" />&nbsp;&nbsp;<b>Google STT Api</b></td>
         <td>Translate audio data into natural language</td>
     </tr>
     <tr>
@@ -93,7 +107,7 @@
    <td align="center"><a href="https://github.com/h-beeen"><img src="https://avatars.githubusercontent.com/u/112257466?v=4" width="180px; style="vertical-align:top" alt=""/>
   </tr>
     <tr>
-	 <td align="center"><a href="https://github.com/h-beeen">A11 - 변해빈</td>
+	 <td align="center"><a href="https://github.com/h-beeen">👑 변해빈</td>
     </tr>
 </table>
 </div>
@@ -102,8 +116,4 @@
 <br>
 
 ---
-
-- API Docs : http://docs.party-bbangbbang.kro.kr<br>
-- Docker Hub : https://hub.docker.com/repository/docker/hbeeen/partybbangbbang/general
-
 
