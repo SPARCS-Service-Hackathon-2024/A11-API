@@ -1,6 +1,6 @@
 package com.partybbangbbang.member.application;
 
-import com.partybbangbbang.couple.application.dto.CoupleIdResponse;
+import com.partybbangbbang.couple.application.dto.response.CoupleIdResponse;
 import com.partybbangbbang.couple.domain.Couple;
 import com.partybbangbbang.couple.infra.persistence.CoupleRepository;
 import com.partybbangbbang.global.exception.BusinessException;

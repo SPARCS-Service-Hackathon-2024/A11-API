@@ -1,6 +1,6 @@
 package com.partybbangbbang.member.presentation;
 
-import com.partybbangbbang.couple.application.dto.CoupleIdResponse;
+import com.partybbangbbang.couple.application.dto.response.CoupleIdResponse;
 import com.partybbangbbang.global.security.annotation.AuthId;
 import com.partybbangbbang.member.application.InvitationService;
 import com.partybbangbbang.member.application.dto.request.InvitationCodeRequest;
