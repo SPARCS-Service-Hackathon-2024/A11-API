@@ -42,4 +42,7 @@ jobs:
             docker pull ${{ secrets.DEV_DOCKER_HUB_URL }}
             docker ps -f name=be-server -q | xargs --no-run-if-empty docker container stop
             docker ps -a -f name=be-server -q | xargs --no-run-if-empty docker container rm
-            docker run -d --name be-server -p 80:8080 ${{ secrets.DEV_DOCKER_HUB_URL }}
+            docker run -d --name be-server -p 80:8080 \
+                -e GOOGLE_APPLICATION_CREDENTIALS=/key.json \
+                ${{ secrets.DEV_DOCKER_HUB_URL }}
+
