@@ -3,6 +3,7 @@ package com.partybbangbbang.member.presentation;
 import com.partybbangbbang.couple.application.dto.CoupleIdResponse;
 import com.partybbangbbang.global.security.annotation.AuthId;
 import com.partybbangbbang.member.application.InvitationService;
+import com.partybbangbbang.member.application.dto.request.InvitationCodeRequest;
 import com.partybbangbbang.member.application.dto.request.MatchRequest;
 import com.partybbangbbang.member.application.dto.response.ValidInvitationResponse;
 import lombok.RequiredArgsConstructor;
@@ -19,9 +20,9 @@ public class InvitationController {
     @GetMapping
     public ResponseEntity<ValidInvitationResponse> isValidInvitation(
             @AuthId Long id,
-            @RequestBody String invitationCode
+            @RequestBody InvitationCodeRequest request
     ) {
-        ValidInvitationResponse invitationCodeResponse = invitationService.getValidInvitationResponse(invitationCode);
+        ValidInvitationResponse invitationCodeResponse = invitationService.isValidInvitation(request);
         return ResponseEntity.ok(invitationCodeResponse);
     }
 
