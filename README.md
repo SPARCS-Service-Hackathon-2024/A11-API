@@ -1,28 +1,50 @@
 <div align="center">
 <br/>
-<a href="https://github.com/SPARCS-Service-Hackathon-2024/A11-API"><img src="https://i.ytimg.com/vi/mwvvQqLaFyA/maxresdefault.jpg" width="83.7%"/></a>
-<p>2024 SPARCS Hackathon A11 <b>Team A11(파티빵빵) Hear</b> API</p>
+<br/>
+<a href=""><img src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/1f2ae364-fed2-4bbd-9aa9-d785e95c2ec5" width="33.7%"/></a><br><br><br>
 
+<img src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/9f80544b-1935-4bd1-a673-0b8409f0d05e" width="77.7"/>
+
+<p>2024 SPARCS Hackathon A11<br>
+<b>Team A11(파티빵빵) Hear</b> API</p>
+
+<br/>
+<br/>
+<br/>
 <br/>
 
 </div>
 
 - Api Server : http://party-bbangbbang.kro.kr/api/v1/
-  
 - API Docs : http://docs.party-bbangbbang.kro.kr
-  
 - Docker Hub : https://hub.docker.com/repository/docker/hbeeen/partybbangbbang/general
 
 <br><br>
 
 <div align="center">
 
-![Slide 16_9 - 71](https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/f7cda74b-1474-4c38-957c-9cc855c61462)
-![Slide 16_9 - 70](https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/5f3ec6ab-bac0-40da-8b59-71c115a1d098)
-![Slide 16_9 - 69](https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/96b3a322-00bb-4d65-afca-a1a6a90ebf8f)
+<table>
+  <th colspan="2">Primary Feature</th>
+  <tr>
+    <td>
+      <img align="center" src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/96b3a322-00bb-4d65-afca-a1a6a90ebf8f" width="100%"/>
+    </td>
+    <td>
+      <img align="center" src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/5f3ec6ab-bac0-40da-8b59-71c115a1d098" width="100%"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <img align="center" src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/f7cda74b-1474-4c38-957c-9cc855c61462" width="100%"/>
+    </td>
+    <td>
+      <img align="center" src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/a5c2394b-d8f1-4462-af3a-c8ffffdcc73e" width="100%"/>
+    </td>
+  </tr>
+</table>
 
-
-
+<br>
+<br>
 
 ## 🔧&nbsp;&nbsp;Tech Stack&nbsp;&nbsp;🔧
 
