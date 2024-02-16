@@ -17,6 +17,12 @@
 
 <div align="center">
 
+![Slide 16_9 - 71](https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/f7cda74b-1474-4c38-957c-9cc855c61462)
+![Slide 16_9 - 70](https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/5f3ec6ab-bac0-40da-8b59-71c115a1d098)
+![Slide 16_9 - 69](https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/96b3a322-00bb-4d65-afca-a1a6a90ebf8f)
+
+
+
 
 ## 🔧&nbsp;&nbsp;Tech Stack&nbsp;&nbsp;🔧
 
