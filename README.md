@@ -1,24 +1,19 @@
 <div align="center">
 <br/>
-<br/>
-<a href=""><img src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/1f2ae364-fed2-4bbd-9aa9-d785e95c2ec5" width="33.7%"/></a><br><br><br>
+<br>
+<br>
+<a href=""><img src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/1f2ae364-fed2-4bbd-9aa9-d785e95c2ec5" width=23%"/></a>
+<br><br><br><p>2024 SPARCS Hackathon<br>
+<b>Team A11(파티빵빵) Hear</b> API<br><br>
+<i>2024. 02. 14 ~ 2024. 02. 16</i><br><br><br>
+<img src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/9f80544b-1935-4bd1-a673-0b8409f0d05e" width="77.7%"/>
 
-<img src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/9f80544b-1935-4bd1-a673-0b8409f0d05e" width="77.7"/>
-
-<p>2024 SPARCS Hackathon A11<br>
-<b>Team A11(파티빵빵) Hear</b> API</p>
-
 <br/>
 <br/>
-<br/>
-<br/>
-
+<br>
 </div>
 
-- Api Server : http://party-bbangbbang.kro.kr/api/v1/
-- API Docs : http://docs.party-bbangbbang.kro.kr
-- Docker Hub : https://hub.docker.com/repository/docker/hbeeen/partybbangbbang/general
-
+- API Docs **(Postman Api Docs)** [바로가기](http://docs.party-bbangbbang.kro.kr)
 <br><br>
 
 <div align="center">
@@ -41,6 +36,29 @@
       <img align="center" src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/a5c2394b-d8f1-4462-af3a-c8ffffdcc73e" width="100%"/>
     </td>
   </tr>
+</table>
+
+<table>
+   <tr>
+      <th>화난 여자 - 중립 남자</th>
+      <th>행복 여자 - 중립 남자</th>
+      <th>행복 여자 - 중립 남자</th>
+      <th>기쁨 여자 - 중립 남자</th>
+   </tr>
+   <tr>
+      <td>
+         <img src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/944a4566-49a8-4d97-adc0-8614213db931"/>
+      </td>
+      <td>
+         <img src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/7d052266-ce9b-4fa3-a1f8-1e8e68eb5445"/>
+      </td>
+      <td>
+         <img src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/fb071172-3d64-4df0-a9ac-4bac0109230c"/>
+      </td>
+      <td>
+         <img src="https://github.com/SPARCS-Service-Hackathon-2024/A11-API/assets/112257466/f72a5e6c-2d88-40f0-9044-8dda0be77b19"/>
+      </td>
+   </tr>
 </table>
 
 <br>
